@@ -1,5 +1,8 @@
 
+def decNum(input):
 
+
+    return
 
 def sanitize(input):
     newinput = []
@@ -9,17 +12,51 @@ def sanitize(input):
 
 
 def gammaNum(input):
-    output =0
+
+    num = ""
 
 
+    for item in range(len(input)):
+        one = 0
+        zero = 0
+        segment = input[item]
+        newsegment = segment[0]
+        for bit in range(len(newsegment)):
 
-    return
+            if newsegment[bit] == '0':
+                zero += 1
+            else:
+                one +=1
+        # print(zero)
+        # print(one)
+        if one > zero:
+            num += "1"
+        else:
+            num += "0"
+    return num
 
 def epsilonNum(input ):
-    output = 0
 
+    num = ""
 
-    return
+    for item in range(len(input)):
+        one = 0
+        zero = 0
+        segment = input[item]
+        newsegment = segment[0]
+        for bit in range(len(newsegment)):
+
+            if newsegment[bit] == '0':
+                zero += 1
+            else:
+                one += 1
+        # print(zero)
+        # print(one)
+        if one < zero:
+            num += "1"
+        else:
+            num += "0"
+    return num
 
 def separateBits():
     file = open("inputdaythree1.txt", "r")
@@ -30,10 +67,13 @@ def separateBits():
     for row in range(len(newinput)):
         for bit in range(len(newinput[row])):
             bits[bit][0] += newinput[row][bit]
-    print(bits)
-    return
+
+
+    return bits
 
 if __name__ == '__main__':
     c = separateBits()
-    # epsilion = epsilonNum(c)
+    epsilion = epsilonNum(c)
+    print("epsilion is : " + epsilion)
     gamma = gammaNum(c)
+    print("gamman is: "+ gamma)
